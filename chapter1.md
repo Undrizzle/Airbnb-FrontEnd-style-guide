@@ -329,5 +329,9 @@ const name = "Capt. Janeway"
 const name = 'Capt. Janeway'
 ```
 
-6.2 字符串
+### 6.2 字符串超过80个字节应该使用字符串连接号换行。
+
+6.3 过度使用字符串
+
+
 
