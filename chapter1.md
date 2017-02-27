@@ -82,13 +82,133 @@ console.log(b)  // ReferenceError
 
 ```js
 // bad
-cosnt item = new Object()
+const item = new Object()
 
 // good
 const item = {}
 ```
 
 ### 3.2 如果你的代码在浏览器环境下执行，别使用保留字作为键值。这样的话在IE8不会运行。但在 ES6 模块和服务器端中使用没有问题。
+
+```js
+// bad
+const superman = {
+    default: { clark: 'kent' },
+    private: true,
+}
+
+// good
+const superman = {
+    defaults: { clark: 'kent' },
+    hidden: true,
+}
+```
+
+### 3.3 使用同义词替换需要使用的保留字。
+
+```js
+// bad
+const superman = {
+    class: 'alien',
+}
+
+// bad
+const superman = {
+    klass: 'alien',
+}
+
+// good
+const superman = {
+    type: 'alien',
+}
+```
+
+### 3.4 创建有动态属性名的对象时，使用可被计算的属性名称。因为这样可以让你在一个地方定义所有的对象属性。
+
+```js
+function  getKey(k) {
+    return `a key named ${k}`
+}
+
+// bad
+const obj = {
+    id: 5,
+    name: 'San Francisco',
+}
+obj[getKey('enabled')] = true
+
+// good
+const obj = {
+    id: 5,
+    name: 'San Francisco',
+    [getKey('enabled')]: true,
+}
+```
+
+### 3.5 使用对象方法的简写。
+
+```js
+// bad
+const atom = {
+    value: 1,
+    
+    addValue: function (value) {
+        return atom.value + value
+    }
+}
+
+// good
+const atom = {
+    value: 1,
+    
+    addValue(value) {
+        return atom.value + value
+    }
+}
+```
+
+### 3.6 使用对象属性值的简写。因为这样更短更有描述性。
+
+```js
+const lukeSkywalker = 'Luke Skywalker'
+
+// bad
+const obj = {
+    lukeSkywalker: lukeSkywalker,
+}
+
+// good
+const obj = {
+    lukeSkywalker,
+}
+```
+
+### 3.7 在对象属性声明前把简写的属性分组。因为这样能清楚地看出哪些属性使用了简写。
+
+```js
+const anakinSkywalker = 'Anakin Skywalker'
+const lukeSkywalker = 'Luke Skywalker'
+
+// bad
+const obj = {
+    episodeOne: 1,
+    twoJedisWalkIntoACantina: 2,
+    lukeSkywalker,
+    episodeThree: 3,
+    mayTheFourth: 4,
+    anakinSkywalker,
+}
+
+// good
+const obj = {
+    lukeSkywalker,
+    anakinSkywalker,
+    episodeOne: 1,
+    twoJedisWalkIntoACantina: 2,
+    episodeThree: 3,
+    mayTheFourth: 4,
+}
+```
 
 
 
