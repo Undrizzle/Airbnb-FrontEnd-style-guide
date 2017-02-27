@@ -151,7 +151,7 @@ const obj = {
 // bad
 const atom = {
     value: 1,
-    
+
     addValue: function (value) {
         return atom.value + value
     }
@@ -160,7 +160,7 @@ const atom = {
 // good
 const atom = {
     value: 1,
-    
+
     addValue(value) {
         return atom.value + value
     }
@@ -209,6 +209,93 @@ const obj = {
     mayTheFourth: 4,
 }
 ```
+
+## 数组
+
+### 4.1 使用字面值创建数组。
+
+```js
+// bad
+const items = new Array()
+
+// good
+const items = []
+```
+
+### 4.2 向数组添加元素时使用 Array\#push 替代直接赋值。
+
+```js
+const someStack = []
+
+// bad
+someStack[someStack.length] = 'abracadabra'
+
+// good
+someStack.push('abracadabra')
+```
+
+### 4.3 使用拓展运算符 ... 赋值数组。
+
+```js
+// bad
+const len = items.length
+const itemCopy = []
+let i
+
+for (i = 0; i < len; i++) {
+    itemCopy[i] = items[i]
+}
+
+// good
+const itemsCopy = [...itmes]
+```
+
+### 4.4 使用 Array\#from 把一个类数组对象转换成数组。
+
+```js
+const foo = document.querySelectorAll('.foo')
+const nodes = Array.from(foo)
+```
+
+## 解构
+
+### 5.1 使用解构存取和使用多属性对象。因为解构能减少临时引用属性。
+
+```js
+// bad
+function getFullName(user) {
+    const firstName = user.firstName
+    const lastName = user.lastName
+    
+    return `${firstName} ${lastName}`
+}
+
+// good
+function getFullName(obj) {
+    cosnt { firstName, lastName } = obj
+    return `${firstName} ${lastName}`
+}
+
+// best
+function getFullName({ firstName, lastName }) {
+    return `${firstName} ${lastName}`
+}
+```
+
+### 5.2 对数组使用解构赋值。
+
+```js
+const arr = [1, 2, 3, 4]
+
+// bad
+const first = arr[0]
+const second = arr[1]
+
+// good
+const [first, second] = arr
+```
+
+### 5.3 需要回传多个值时，使用对象解构，而不是数组解构。增加属性或者改变排序不会改变调用时的位置。
 
 
 
