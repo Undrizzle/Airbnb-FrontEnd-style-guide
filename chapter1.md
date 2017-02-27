@@ -361,14 +361,72 @@ function sayHi(name) {
 function sayHi(name) {
     return ['How are you, ', name, '?'].join()
 }
- 
+
 // good
 function sayHi(name) {
     return `How are you, ${name}?`
 }
 ```
 
+## 函数
 
+### 7.1 使用函数声明代替函数表达式。因为函数声明是可命名的，所以他们在调用栈中更容易被识别。此外，函数声明会把整个函数提升（hoisted），而函数表达式只会把函数的引用变量名提升。这条规则使得箭头函数可以取代函数表达式。
+
+```js
+// bad
+const foo = function () {
+}
+
+// good
+function foo() {
+}
+```
+
+### 7.2 函数表达式。
+
+```js
+// 立即调用的函数表达式（IIFE）
+(() => {
+    console.log('Welcome to the Internet. Please follow me.')
+})()
+```
+
+### 7.3 永远不要在一个非函数代码块（if、while等）中声明一个函数，把那个函数赋给一个变量。浏览器允许你这么做，但它们的解析表现不一致。
+
+### 7.4 ECMA-262把 block定义为一组语句。函数声明不是语句。
+
+```js
+// bad
+if (currentUser) {
+    function test() {
+        console.log('Nope.')
+    }
+}
+
+// good
+let test
+if (currentUser) {
+    test = () => {
+        console.log('Yup.')
+    }
+}
+```
+
+### 7.5 永远不要把参数命名为 arguments 。这将取代原来函数作用域内的 arguments 对象。
+
+```js
+// bad
+function nope(name, options, arguments) {
+    // ...stuff...
+}
+
+// good
+function yup(name, options, args) {
+    // ...stuff...
+}
+```
+
+### 7.6 不要使用 arguments ，可以选择 rest 语法 ... 替代。因为使用 ... 能明确你要传入的参数。另外 rest参数是一个真正的数组，而 arguments 是一个类数组。
 
 
 
