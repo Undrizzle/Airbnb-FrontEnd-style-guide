@@ -329,9 +329,46 @@ const name = "Capt. Janeway"
 const name = 'Capt. Janeway'
 ```
 
-### 6.2 字符串超过80个字节应该使用字符串连接号换行。
+### 6.2 字符串超过80个字节应该使用字符串连接符号换行。
 
-6.3 过度使用字符串
+### 6.3 过度使用字符串连接符号可能会对性能造成影响。
+
+```js
+// bad
+const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.'
+
+// bad
+const errorMessage = 'This is a super long error that was thrown because \
+of Batman. When you stop to think about how Batman had anything to do \
+with this, you would get nowhere \
+fast.'
+
+// good
+const errorMessage = 'This is a super long error that was thrown because ' +
+  'of Batman. When you stop to think about how Batman had anything to do ' +
+  'with this, you would get nowhere fast.'
+```
+
+### 6.4 程序化生成字符串时， 使用模板字符串代替字符串连接。因为模板字符串更为简洁，更具可读性。
+
+```js
+// bad
+function sayHi(name) {
+    return 'How are you, ' + name + '?'
+}
+
+// bad
+function sayHi(name) {
+    return ['How are you, ', name, '?'].join()
+}
+ 
+// good
+function sayHi(name) {
+    return `How are you, ${name}?`
+}
+```
+
+
 
 
 
