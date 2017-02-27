@@ -314,8 +314,20 @@ function processInput(input) {
 }
 
 // 调用时只选择需要的数据
-const { left, right } = processInput(input)
+const { left, right } = processInput(input字符串
 ```
 
+## 字符串
 
+### 6.1 字符串使用单引号 ' ' 。
+
+```js
+// bad
+const name = "Capt. Janeway"
+
+// good
+const name = 'Capt. Janeway'
+```
+
+6.2 字符串
 
