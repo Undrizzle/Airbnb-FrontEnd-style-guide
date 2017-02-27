@@ -428,5 +428,46 @@ function yup(name, options, args) {
 
 ### 7.6 不要使用 arguments ，可以选择 rest 语法 ... 替代。因为使用 ... 能明确你要传入的参数。另外 rest参数是一个真正的数组，而 arguments 是一个类数组。
 
+```js
+// bad
+funciton concatenateAll() {
+    const args = Array.prototype.slice.call(arguments)
+    return args.join('')
+}
+
+
+// good
+function concatenateAll(...args) {
+    return args.join('')
+}
+```
+
+### 7.7 直接给函数的参数指定默认值，不要使用一个变化的函数参数。
+
+```js
+// really bad
+function handleThings(opts) {
+    // 不！我们不应该改变函数参数
+    // 更加糟糕：如果参数 opts 是 false 的话，它就会被设定为一个对象
+    // 但这样的写法会造成一些 Bugs
+    // 例如当 opts 被赋值为空字符串，opts 仍然会被下一行代码设定为一个空对象
+    opts = opts || {}
+    // ...
+}
+
+// still bad
+function handleThings(opts) {
+    if (opts === void 0) {
+        opts = {}
+    }
+    // ...
+}
+
+// good
+function handleThings(opts = {}) {
+    // ...
+}
+```
+
 
 
