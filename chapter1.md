@@ -657,7 +657,7 @@ export default es6
 
 ## Iterators and Generators
 
-### 11.1 不要使用 iterators。使用高阶函数例如 map\(\) 和 reduce\(\) 替代 for-of。
+### 11.1 不要使用 iterators。使用高阶函数例如 map\(\) 和 reduce\(\) 替代 for-of。这加强了我们不变的规则。处理纯函数的回调值更易读，这比它带来的副作用更重要。
 
 
 
