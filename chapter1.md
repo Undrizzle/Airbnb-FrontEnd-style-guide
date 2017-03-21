@@ -655,5 +655,9 @@ import { es6 } from './AirbnbStyleGuide'
 export default es6
 ```
 
+## Iterators and Generators
+
+### 11.1 不要使用 iterators。使用高阶函数例如 map\(\) 和 reduce\(\) 替代 for-of。
+
 
 
