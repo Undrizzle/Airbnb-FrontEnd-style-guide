@@ -515,5 +515,17 @@ count()  // 3
 
 ### 9.1 总是使用 class ，避免直接操作 prototype 。因为 class 语法更为简洁更易读。
 
+```js
+// bad
+function Queue(contents = []) {
+    this._queue = [...contents]
+}
+Queue.prototype.pop = function() {
+    const value = this._queue[0]
+    this._queue.splice(0, 1)
+    return value
+}
+```
+
 
 
