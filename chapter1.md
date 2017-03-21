@@ -616,5 +616,32 @@ class Jedi {
 
 ## 模块
 
+### 10.1 总是使用模块 \(import / export \) 而不是其他非标准模块系统。
+
+```js
+// bad 
+const AirbnbStyleGuide = require('./AirbnbStyleGuide')
+module.exports = AirbnbStyleGuide.es6
+
+// ok
+import AirbnbStyleGuide from './AirbnbStyleGuide'
+export default AirbnbStyleGuide.es6
+
+// best
+import { es6 } from './AirbnbStyleGuide'
+export default es6
+
+```
+
+### 10.2 不要使用通配符 import。这样能确保你只有一个默认 export。
+
+```
+// bad
+import * as AirbnbStyleGuide from './AirbnbStyleGuide'
+
+// good
+import AirbnbStyleGuide from './AirbnbStyleGuide'
+```
+
 
 
