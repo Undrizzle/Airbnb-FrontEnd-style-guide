@@ -560,5 +560,59 @@ class PeekableQueue extends Queue {
 }
 ```
 
+### 9.3 方法可以返回 this 来帮助链式调用。
+
+```js
+// bad
+Jedi.prototype.jump = function() {
+    this.jumping = true
+    return true
+}
+
+Jedi.prototype.setHeight = function(height) {
+    this.height = heigh
+}
+
+const luke = new Jedi()
+luke.jump()    // => true
+luke.setHeight(20)    // => undefined
+
+// good
+class Jedi {
+    jump() {
+        this.jumping = true
+        return this
+    }
+    
+    setHeight(height) {
+        this.height = height
+        return this
+    }
+}
+
+const luke = new Jedi()
+
+luke.jump()
+    .setHeight(20)
+```
+
+### 9.4 可以写一个自定义的 toString\(\) 方法，但要确保它能正常运行并且不会引起副作用。
+
+```js
+class Jedi {
+    constructor(options = {}) {
+        this.name = options.name || 'no name'
+    }
+    
+    getName() {
+        return this.name
+    }
+    
+    toString() {
+        return `Jedi - ${this.getName()}`
+    }
+}
+```
+
 
 
