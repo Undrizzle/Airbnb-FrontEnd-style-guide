@@ -642,5 +642,18 @@ import * as AirbnbStyleGuide from './AirbnbStyleGuide'
 import AirbnbStyleGuide from './AirbnbStyleGuide'
 ```
 
+10.3 不要从 import 中直接 export。
+
+```js
+// bad 
+// filename es6.js
+export { es6 as default } from './AirbnbStyleGuide'
+
+// good
+// filename es6.js
+import { es6 } from './AirbnbStyleGuide'
+export default es6
+```
+
 
 
