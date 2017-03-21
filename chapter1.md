@@ -536,6 +536,28 @@ class Queue {
         this._queue.splice(0, 1)
         return value
     }
+}
+```
+
+### 9.2 使用 extends 继承。因为 extends 是一个内建的原型继承方法并且不会破坏 instanceof。
+
+```js
+// bad
+const inherits = require('inherits')
+function PeekableQueue(contents) {
+    Queue.apply(this, contents)
+}
+inherits(PeekableQueue, Queue)
+PeekableQueue.prototype.peek = function() {
+    return this._queue[0]
+}
+
+// good
+class PeekableQueue extends Queue {
+    peek() {
+        return this._queue[0]
+    }
+}
 ```
 
 
