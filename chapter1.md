@@ -630,12 +630,11 @@ export default AirbnbStyleGuide.es6
 // best
 import { es6 } from './AirbnbStyleGuide'
 export default es6
-
 ```
 
 ### 10.2 不要使用通配符 import。这样能确保你只有一个默认 export。
 
-```
+```js
 // bad
 import * as AirbnbStyleGuide from './AirbnbStyleGuide'
 
