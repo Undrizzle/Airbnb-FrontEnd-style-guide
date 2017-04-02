@@ -680,5 +680,22 @@ const sum = numbers.reduce((total, num) => total + num, 0)
 sum === 15
 ```
 
+## 属性
+
+### 12.1 使用 . 来访问对象的属性。
+
+```js
+const luke = {
+    jedi: true,
+    age: 28,
+}
+
+// bad 
+const isJedi = luke['jedi']
+
+// good
+const isJedi = luke.jedi
+```
+
 
 
