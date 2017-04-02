@@ -697,5 +697,20 @@ const isJedi = luke['jedi']
 const isJedi = luke.jedi
 ```
 
+12.2 当通过变量访问属性时使用中括号 \[\]
+
+```js
+const luke = {
+    jedi: true,
+    age: 28,
+}
+
+function getProp(prop) {
+    return luke[prop]
+}
+
+const isJedi = getProp('jedi')
+```
+
 
 
